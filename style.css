@@ -1,7 +1,18 @@
+:root {
+    --color-text: #ffffff;
+    --color-accent: #4da6ff;
+    --color-accent-hover: #3399ff;
+    --color-dark: #1c1c1c;
+    --color-field: #2a2a2a;
+    --color-border: #444444;
+    --shadow-soft: 0 15px 40px rgba(0, 0, 0, 0.08);
+    --shadow-strong: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
@@ -9,79 +20,162 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: white;
-
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                      url("images/puu.jpg"); /* oma kuva */
-
-    background-size: cover;
+    min-height: 100vh;
+    color: var(--color-text);
+    font-family: "Poppins", sans-serif;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url("images/puu.jpg");
     background-position: center;
+    background-size: cover;
     background-attachment: fixed;
 }
 
+img {
+    display: block;
+    max-width: 100%;
+}
 
+a {
+    color: inherit;
+}
 
-/* NAV */
+.container {
+    width: min(100%, 1100px);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.site-nav {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 15px 0;
+    background: rgba(0, 0, 0, 0.7);
+}
+
 .nav-container {
-    max-width: 1200px;
-    margin: auto;
     display: flex;
-    justify-content: space-between; /* logo vasemmalle, linkit oikealle */
     align-items: center;
+    justify-content: space-between;
+    width: min(100%, 1200px);
+    margin: 0 auto;
     padding: 0 40px;
 }
 
 .logo img {
-    height: 60px; /* voit kasvattaa halutessasi */
+    height: 60px;
 }
 
 .nav-links {
     display: flex;
+    gap: 60px;
     list-style: none;
-    gap: 60px; /* väli linkkien välillä */
-}
-
-.nav-links li {
-    margin: 0;
 }
 
 .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
     position: relative;
     padding-bottom: 5px;
+    color: var(--color-text);
+    font-weight: 600;
+    text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .nav-links a::after {
-    content: "";
     position: absolute;
-    width: 0%;
-    height: 2px;
-    left: 0;
     bottom: 0;
-    background-color: #4da6ff;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    content: "";
     transition: width 0.3s ease;
 }
 
-.nav-links a:hover {
-    color: #4da6ff;
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    color: var(--color-accent);
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after {
     width: 100%;
 }
 
-
-
-nav ul {
-    display: flex;
-    list-style: none;
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
 }
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: var(--color-text);
+    transition: 0.3s;
+}
+
+.hero {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    margin-bottom: 20px;
+    font-size: 56px;
+}
+
+.hero p {
+    max-width: 600px;
+    font-size: 22px;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 35px;
+    border-radius: 30px;
+    color: var(--color-text);
+    background: var(--color-accent);
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.content-box {
+    max-width: 900px;
+    margin: 120px auto;
+    padding: 60px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+.content-box h1,
+.content-box h2,
+.partners h2 {
+    margin-bottom: 30px;
+}
+
+.content-box p + p {
+    margin-top: 16px;
+}
+
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -90,11 +184,16 @@ nav ul {
 }
 
 .card {
-    background: rgba(255,255,255,0.05);
-    border-radius: 20px;
     overflow: hidden;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-strong);
 }
 
 .card img {
@@ -111,185 +210,223 @@ nav ul {
     padding: 0 20px 20px;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+.contact-section {
+    padding: 60px 20px;
 }
 
-nav {
-    background: rgba(0,0,0,0.7);
-    padding: 15px 0;
-    position: fixed;
+.contact-card {
+    overflow: hidden;
+    margin: 80px 0;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: var(--shadow-soft);
+}
+
+.map-wrapper iframe {
+    display: block;
     width: 100%;
-    top: 0;
-    z-index: 1000;
+    height: 400px;
+    border: 0;
 }
 
-nav ul {
-    list-style: none;
+.contact-content {
     display: flex;
-    justify-content: center;
+    gap: 60px;
+    padding: 50px;
 }
 
-nav li {
-    margin: 0 25px;
+.contact-form,
+.contact-info {
+    flex: 1;
 }
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    position: relative;
-    padding-bottom: 5px;
-    transition: color 0.3s ease;
-}
-
-nav a::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    left: 0;
-    bottom: 0;
-    background-color: #4da6ff;
-    transition: width 0.3s ease;
-}
-
-nav a:hover {
-    color: #4da6ff;
-}
-
-nav a:hover::after {
-    width: 100%;
-}
-
-/* HERO */
-
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    padding: 0 20px;
-}
-
-.hero h1 {
-    font-size: 56px;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 22px;
-    max-width: 600px;
-}
-
-/* BUTTON */
-
-.button {
-    margin-top: 30px;
-    padding: 15px 35px;
-    background: #4da6ff;
-    border-radius: 30px;
-    text-decoration: none;
-    color: white;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.button:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-/* CONTENT BOX */
-
-.content-box {
-    max-width: 900px;
-    margin: 120px auto;
-    padding: 60px;
-    background: rgba(0,0,0,0.7);
-    border-radius: 20px;
-    text-align: center;
-}
-
-/* CONTACT FORM */
 
 .contact-form {
     display: flex;
     flex-direction: column;
+}
+
+.contact-form form {
     margin-top: 30px;
 }
 
 .contact-form input,
 .contact-form textarea {
-    padding: 12px;
+    width: 100%;
     margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid #dddddd;
     border-radius: 8px;
-    border: none;
-    font-size: 16px;
+    font: inherit;
+}
+
+.contact-form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.contact-form button,
+.cookie-banner button {
+    border: 0;
+    color: var(--color-text);
+    background: var(--color-accent);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .contact-form button {
-    padding: 12px;
-    border-radius: 30px;
-    border: none;
-    background: #4da6ff;
-    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
     font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
+}
+
+.contact-form button:hover,
+.contact-form button:focus-visible,
+.cookie-banner button:hover,
+.cookie-banner button:focus-visible {
+    background: var(--color-accent-hover);
 }
 
 .contact-form button:hover {
     transform: translateY(-3px);
 }
 
-/* FOOTER */
-
-footer {
-    text-align: center;
-    padding: 40px 0;
+.dark-card {
+    border-radius: 12px;
+    color: var(--color-text);
+    background-color: var(--color-dark);
 }
 
-/* FADE IN */
+.dark-card input,
+.dark-card textarea {
+    border-color: var(--color-border);
+    color: var(--color-text);
+    background-color: var(--color-field);
+}
+
+.dark-card input::placeholder,
+.dark-card textarea::placeholder {
+    color: #aaaaaa;
+}
+
+.contact-info h3 {
+    margin-top: 24px;
+}
+
+.contact-info a {
+    color: var(--color-accent);
+}
+
+.facebook-link {
+    display: block;
+    width: fit-content;
+    margin-top: 15px;
+    margin-left: auto;
+}
+
+.facebook-link img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.2s;
+}
+
+.facebook-link:hover img,
+.facebook-link:focus-visible img {
+    transform: scale(1.1);
+}
+
+.partners {
+    padding: 20px 0 80px;
+}
+
+.partners h2 {
+    text-align: center;
+}
+
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 15px;
+    align-items: center;
+    justify-items: center;
+}
+
+.partners-grid a:nth-child(1),
+.partners-grid a:nth-child(2),
+.partners-grid a:nth-child(3) {
+    grid-column: span 4;
+}
+
+.partners-grid a:nth-child(4),
+.partners-grid a:nth-child(5),
+.partners-grid a:nth-child(6),
+.partners-grid a:nth-child(7) {
+    grid-column: span 3;
+}
+
+.partners-grid img {
+    width: 100%;
+    max-height: 90px;
+    object-fit: contain;
+}
+
+footer {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.cookie-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: calc(100% - 40px);
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: var(--color-text);
+    background: #222222;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transform: translateX(-50%);
+}
+
+.cookie-banner[hidden] {
+    display: none;
+}
+
+.cookie-banner button {
+    flex-shrink: 0;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
 
 .fade-in {
     opacity: 0;
     transform: translateY(40px);
-    transition: all 0.8s ease-out;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .fade-in.show {
     opacity: 1;
     transform: translateY(0);
 }
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 6px;
-}
 
-.hamburger span {
-    width: 28px;
-    height: 3px;
-    background: white;
-    transition: 0.3s;
-}
 @media (max-width: 768px) {
+    .nav-container {
+        padding: 0 24px;
+    }
 
     .nav-links {
         position: absolute;
         top: 80px;
         right: 0;
-        background: rgba(0,0,0,0.95);
         width: 100%;
         flex-direction: column;
         align-items: center;
-        padding: 40px 0;
         gap: 30px;
+        padding: 40px 0;
+        background: rgba(0, 0, 0, 0.95);
         transform: translateY(-200%);
         transition: transform 0.4s ease;
     }
@@ -301,275 +438,40 @@ footer {
     .hamburger {
         display: flex;
     }
-}
-.contact-section {
-  padding: 60px 20px;
-}
 
-.contact-container {
-  display: flex;
-  gap: 50px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
+    .hero h1 {
+        font-size: 42px;
+    }
 
-.contact-form,
-.contact-info {
-  flex: 1;
-}
+    .hero p {
+        font-size: 18px;
+    }
 
-/* Lomakkeen tyyli */
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-}
+    .content-box {
+        margin: 90px 20px;
+        padding: 40px 24px;
+    }
 
-.contact-form button {
-  padding: 12px 20px;
-  cursor: pointer;
-}
-@media (max-width: 768px) {
-  .contact-container {
-    flex-direction: column;
-  }
-}
-.map-section {
-  width: 100%;
-  margin-bottom: 50px;
-}
+    .contact-content {
+        flex-direction: column;
+        gap: 35px;
+        padding: 30px;
+    }
 
-.map-section iframe {
-  display: block;
-}
-/* Yleinen container keskitykseen */
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+    .map-wrapper iframe {
+        height: 300px;
+    }
 
-/* Karttaboxi */
-.map-box {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
+    .partners-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 
-.map-box iframe {
-  width: 100%;
-  height: 400px;
-  border-radius: 10px;
-  border: none;
-}
+    .partners-grid a {
+        grid-column: auto !important;
+    }
 
-/* Contact box */
-.contact-box {
-  display: flex;
-  gap: 50px;
-  background: #ffffff;
-  padding: 40px;
-  margin-top: 50px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-.contact-form,
-.contact-info {
-  flex: 1;
-}
-@media (max-width: 768px) {
-  .contact-box {
-    flex-direction: column;
-  }
-}
-/* Keskitys */
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* Koko kortti */
-.contact-card {
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-  overflow: hidden;
-  margin: 80px 0;
-}
-
-/* Kartta */
-.map-wrapper iframe {
-  width: 100%;
-  height: 400px;
-  border: none;
-  display: block;
-}
-
-/* Alasisältö */
-.contact-content {
-  display: flex;
-  gap: 60px;
-  padding: 50px;
-}
-
-.contact-form,
-.contact-info {
-  flex: 1;
-}
-
-/* Lomake */
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
-
-.contact-form button {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-@media (max-width: 768px) {
-  .contact-content {
-    flex-direction: column;
-    padding: 30px;
-  }
-
-  .map-wrapper iframe {
-    height: 300px;
-  }
-}
-/* Tumman kortin tausta */
-.dark-card {
-  background-color: #1c1c1c; /* tumma harmaa/musta */
-  color: #ffffff;            /* teksti valkoiseksi */
-  padding: 50px;
-  border-radius: 12px;
-}
-
-/* Lomake inputit tummaan korttiin */
-.dark-card input,
-.dark-card textarea {
-  background-color: #2a2a2a;
-  color: #fff;
-  border: 1px solid #444;
-}
-
-.dark-card input::placeholder,
-.dark-card textarea::placeholder {
-  color: #aaa;
-}
-
-/* Lomakkeen nappi */
-.dark-card button {
-  background-color: #4da6ff;
-  color: #fff;
-  border-radius: 8px;
-  border: none;
-  padding: 12px 20px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.dark-card button:hover {
-  background-color: #3399ff;
-}
-
-/* Yhteystietojen tekstit */
-.dark-card p, 
-.dark-card h2 {
-  color: #ffffff;
-}
-/* Partnerit osio */
-
-.partners-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 15px;
-  align-items: center;
-  justify-items: center;
-}
-.partners h2 {
-  text-align: center;
-  margin-bottom: 50px;
-}
-/* ensimmäinen rivi 3 kuvaa */
-
-.partners-grid a:nth-child(1),
-.partners-grid a:nth-child(2),
-.partners-grid a:nth-child(3) {
-  grid-column: span 4;
-}
-
-/* toinen rivi 4 kuvaa */
-
-.partners-grid a:nth-child(4),
-.partners-grid a:nth-child(5),
-.partners-grid a:nth-child(6),
-.partners-grid a:nth-child(7) {
-  grid-column: span 3;
-}
-.partners-grid img {
-  width: 100%;
-  max-height: 90px;
-  object-fit: contain;
-}
-
-@media (max-width: 768px) {
-
-  .partners-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-}
-.facebook-link {
-  display: block;
-  text-align: right;
-  margin-top: 15px;
-}
-
-.facebook-link img {
-  width: 30px;
-  height: 30px;
-  transition: transform 0.2s;
-}
-
-.facebook-link img:hover {
-  transform: scale(1.1);
-}
-.cookie-banner {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #222;
-  color: #fff;
-  padding: 15px 20px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  z-index: 9999;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-}
-
-.cookie-banner button {
-  background: #4da6ff;
-  border: none;
-  padding: 8px 15px;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.cookie-banner button:hover {
-  background: #3399ff;
+    .cookie-banner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }

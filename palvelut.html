@@ -2,28 +2,51 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <title>Palvelut</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palvelut | Timber Oy</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a class="logo" href="index.html" aria-label="Timber Oy etusivu">
+                <img src="images/Logo.webp" alt="Timber Oy logo">
+            </a>
 
-<nav>
-    <ul>
-        <li><a href="index.html">Etusivu</a></li>
-        <li><a href="palvelut.html">Palvelut</a></li>
-        <li><a href="yhteystiedot.html">Yhteystiedot</a></li>
-    </ul>
-</nav>
+            <button class="hamburger" id="hamburger" type="button" aria-label="Avaa valikko" aria-controls="nav-links" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-<div class="container">
-    <h2>Palvelumme</h2>
-    <p>Kuvaile palvelut tähän.</p>
-</div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html#etusivu">Etusivu</a></li>
+                <li><a href="index.html#palvelut">Palvelut</a></li>
+                <li><a href="index.html#yhteys">Yhteystiedot</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<footer>
-    © 2026 Timber Oy
-</footer>
+    <main class="content-box">
+        <h1>Palvelumme</h1>
+        <p>
+            Timber Oy tarjoaa rakennusurakointia, rakennusmittausta sekä pientalorakentamista
+            Lahden, Hämeenlinnan ja Kouvolan alueella.
+        </p>
+    </main>
 
+    <footer>
+        © 2026 Timber Oy
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("nav-links");
+
+        hamburger.addEventListener("click", () => {
+            const isOpen = navLinks.classList.toggle("active");
+            hamburger.setAttribute("aria-expanded", String(isOpen));
+        });
+    </script>
 </body>
 </html>

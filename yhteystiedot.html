@@ -2,40 +2,51 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <title>Yhteystiedot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yhteystiedot | Timber Oy</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a class="logo" href="index.html" aria-label="Timber Oy etusivu">
+                <img src="images/Logo.webp" alt="Timber Oy logo">
+            </a>
 
-<nav>
-    <ul>
-        <li><a href="index.html">Etusivu</a></li>
-        <li><a href="palvelut.html">Palvelut</a></li>
-        <li><a href="yhteystiedot.html">Yhteystiedot</a></li>
-    </ul>
-</nav>
+            <button class="hamburger" id="hamburger" type="button" aria-label="Avaa valikko" aria-controls="nav-links" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-<div class="container">
-    <h2>Ota yhteyttä</h2>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html#etusivu">Etusivu</a></li>
+                <li><a href="index.html#palvelut">Palvelut</a></li>
+                <li><a href="index.html#yhteys">Yhteystiedot</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <form class="contact-form">
-        <input type="text" placeholder="Nimi" required>
-        <input type="email" placeholder="Sähköposti" required>
-        <textarea placeholder="Viesti" rows="5" required></textarea>
-        <button type="submit">Lähetä viesti</button>
-    </form>
+    <main class="content-box">
+        <h1>Yhteystiedot</h1>
+        <p><strong>Timber Oy</strong></p>
+        <p>Mustapuronkatu 9, 15300 Lahti</p>
+        <p>Åke Forsstrom, puh. 0400 595 820</p>
+        <p><a href="mailto:mittaus@timber.fi">mittaus@timber.fi</a></p>
+    </main>
 
-    <p style="margin-top:40px;">
-        Puhelin: 040 123 4567<br>
-        Sähköposti: info@yritys.fi
-    </p>
-</div>
+    <footer>
+        © 2026 Timber Oy
+    </footer>
 
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("nav-links");
 
-<footer>
-    © 2026 Yrityksen nimi
-</footer>
-
+        hamburger.addEventListener("click", () => {
+            const isOpen = navLinks.classList.toggle("active");
+            hamburger.setAttribute("aria-expanded", String(isOpen));
+        });
+    </script>
 </body>
 </html>
