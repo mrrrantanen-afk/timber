@@ -85,6 +85,14 @@
                         urakoimme osan talostasi kiinteällä urakkahinnalla. Tarvittaessa apua myös pienemmissä töissä.
                     </p>
                 </article>
+
+                <button class="card gallery-card" id="open-gallery" type="button">
+                    <img src="images/kuvagalleria/Hallin julkisivutyöt.webp" alt="Kuvagalleria rakennustöistä">
+                    <h3>Kuvagalleria</h3>
+                    <p>
+                        Katso kuvia toteutetuista rakennus-, julkisivu-, asennus- ja maanrakennustöistä.
+                    </p>
+                </button>
             </div>
         </section>
 
@@ -163,6 +171,27 @@
         © 2026 Timber Oy
     </footer>
 
+    <div class="gallery-modal" id="gallery-modal" hidden>
+        <div class="gallery-dialog" role="dialog" aria-modal="true" aria-labelledby="gallery-title">
+            <div class="gallery-header">
+                <h2 id="gallery-title">Kuvagalleria</h2>
+                <button class="gallery-close" id="close-gallery" type="button" aria-label="Sulje kuvagalleria">×</button>
+            </div>
+
+            <div class="gallery-grid" id="gallery-grid"></div>
+        </div>
+    </div>
+
+    <div class="lightbox" id="lightbox" hidden>
+        <button class="lightbox-close" id="close-lightbox" type="button" aria-label="Sulje kuva">×</button>
+        <button class="lightbox-nav lightbox-prev" id="prev-image" type="button" aria-label="Edellinen kuva">‹</button>
+        <figure class="lightbox-content">
+            <img id="lightbox-image" src="" alt="">
+            <figcaption id="lightbox-caption"></figcaption>
+        </figure>
+        <button class="lightbox-nav lightbox-next" id="next-image" type="button" aria-label="Seuraava kuva">›</button>
+    </div>
+
     <div id="cookie-banner" class="cookie-banner">
         <p>Tämä sivusto käyttää evästeitä paremman käyttökokemuksen tarjoamiseksi.</p>
         <button id="accept-cookies" type="button">Hyväksy</button>
@@ -200,6 +229,129 @@
         cookieButton.addEventListener("click", () => {
             localStorage.setItem("cookiesAccepted", "true");
             cookieBanner.hidden = true;
+        });
+
+        const galleryImages = [
+            "Ajorampin muotitus.webp",
+            "Ajorampin pyöreä seinä.webp",
+            "Hallin julkisivutyöt.webp",
+            "Julkisivun asennustyöt.webp",
+            "Julkisivutyöt .webp",
+            "Kaivinkone Yanmar Vio57u .webp",
+            "Kattoelementti teko ja asennustyöt.webp",
+            "Kattotuoli asennus.webp",
+            "Keittiön asennus.webp",
+            "Kramer 750.webp",
+            "Muottityön valmistelua.webp",
+            "Ok talo Maanrakennustyöt.webp",
+        ];
+
+        const galleryModal = document.getElementById("gallery-modal");
+        const galleryGrid = document.getElementById("gallery-grid");
+        const openGallery = document.getElementById("open-gallery");
+        const closeGallery = document.getElementById("close-gallery");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightbox-image");
+        const lightboxCaption = document.getElementById("lightbox-caption");
+        const closeLightbox = document.getElementById("close-lightbox");
+        const prevImage = document.getElementById("prev-image");
+        const nextImage = document.getElementById("next-image");
+        let currentGalleryIndex = 0;
+
+        function showLightboxImage(index) {
+            currentGalleryIndex = (index + galleryImages.length) % galleryImages.length;
+
+            const fileName = galleryImages[currentGalleryIndex];
+            const imagePath = encodeURI(`images/kuvagalleria/${fileName}`);
+            const imageTitle = fileName.replace(".webp", "").trim();
+
+            lightboxImage.src = imagePath;
+            lightboxImage.alt = imageTitle;
+            lightboxCaption.textContent = imageTitle;
+        }
+
+        function closeLightboxView() {
+            lightbox.hidden = true;
+            lightboxImage.src = "";
+            lightboxCaption.textContent = "";
+        }
+
+        galleryImages.forEach((fileName, index) => {
+            const imagePath = encodeURI(`images/kuvagalleria/${fileName}`);
+            const imageTitle = fileName.replace(".webp", "").trim();
+            const button = document.createElement("button");
+            const image = document.createElement("img");
+            const caption = document.createElement("span");
+
+            button.className = "gallery-item";
+            button.type = "button";
+            button.setAttribute("aria-label", `Avaa kuva: ${imageTitle}`);
+
+            image.src = imagePath;
+            image.alt = imageTitle;
+            image.loading = "lazy";
+
+            caption.textContent = imageTitle;
+
+            button.appendChild(image);
+            button.appendChild(caption);
+            button.addEventListener("click", () => {
+                showLightboxImage(index);
+                lightbox.hidden = false;
+                closeLightbox.focus();
+            });
+
+            galleryGrid.appendChild(button);
+        });
+
+        openGallery.addEventListener("click", () => {
+            galleryModal.hidden = false;
+            closeGallery.focus();
+        });
+
+        closeGallery.addEventListener("click", () => {
+            galleryModal.hidden = true;
+        });
+
+        closeLightbox.addEventListener("click", () => {
+            closeLightboxView();
+        });
+
+        prevImage.addEventListener("click", () => {
+            showLightboxImage(currentGalleryIndex - 1);
+        });
+
+        nextImage.addEventListener("click", () => {
+            showLightboxImage(currentGalleryIndex + 1);
+        });
+
+        galleryModal.addEventListener("click", (event) => {
+            if (event.target === galleryModal) {
+                galleryModal.hidden = true;
+            }
+        });
+
+        lightbox.addEventListener("click", (event) => {
+            if (event.target === lightbox) {
+                closeLightboxView();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (!lightbox.hidden && event.key === "ArrowLeft") {
+                showLightboxImage(currentGalleryIndex - 1);
+                return;
+            }
+
+            if (!lightbox.hidden && event.key === "ArrowRight") {
+                showLightboxImage(currentGalleryIndex + 1);
+                return;
+            }
+
+            if (event.key !== "Escape") return;
+
+            galleryModal.hidden = true;
+            closeLightboxView();
         });
     </script>
 </body>
