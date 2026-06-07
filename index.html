@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Laadukkaat rakennuspalvelut Lahti | Timber Oy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Timber Oy tarjoaa laadukkaita rakennuspalveluita ja rakennusmittausta Lahdessa ja Päijät-Hämeessä.">
+</head>
+
+<div id="cookie-banner" class="cookie-banner">
+  <p>
+    Tämä sivusto käyttää evästeitä paremman käyttökokemuksen tarjoamiseksi.
+  </p>
+  <button id="accept-cookies">Hyväksy</button>
+</div>
+<script>
+const banner = document.getElementById("cookie-banner");
+const button = document.getElementById("accept-cookies");
+
+// Tarkista onko hyväksytty aiemmin
+if (localStorage.getItem("cookiesAccepted")) {
+  banner.style.display = "none";
+}
+
+// Kun klikataan hyväksy
+button.addEventListener("click", () => {
+  localStorage.setItem("cookiesAccepted", "true");
+  banner.style.display = "none";
+});
+</script>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="logo">
+            <img src="images/Logo.webp" alt="Logo">
+        </div>
+
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#etusivu">Etusivu</a></li>
+            <li><a href="#palvelut">Palvelut</a></li>
+            <li><a href="#yhteys">Yhteystiedot</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section id="etusivu" class="hero fade-in">
+    <h1>Timber Oy</h1>
+    <p>Laadukasta rakentamista</p>
+    <p>Vuodesta 2007</p>
+    <a href="#yhteys" class="button">Ota yhteyttä</a>
+</section>
+
+<section id="palvelut" class="content-box fade-in">
+    <h2>Palvelumme</h2>
+    <p>Rakennusliike Timber Oy on Päijät-Hämeessä toimiva nuorekas ja laadukas rakennusalan ammattilaisista koostuva yritys.
+       Yritykselle tärkeää on laadukkaiden rakennuspalveluiden tuottaminen nopeasti ja ammattitaidolla.</p>
+    <p>Yrityksen alkuaikoina toimimme pääasiassa pääkaupunkiseudulla. Tällä hetkellä rakennamme pääasiassa Lahden, Hämeenlinnan ja Kouvolan alueella.</p>
+    <p>Rakennusliike Timber Oy työllistää tällä hetkellä useita rakennusalan ammattilaisia. Kokemusta meiltä löytyy niin pientalorakentamisesta kuin isoista koulutuskeskusten, kerros- ja palvelutalojen osa-urakoinneista sekä mittaustöistä.</p>
+
+    <div class="card-grid">
+        <div class="card">
+            <img src="images/raksa1.webp" alt="Rakennusurakointi">
+            <h3>Rakennusurakointi</h3>
+            <p>Hoidamme vuosien kokemuksella koulut, kaupat, palvelutalot sekä hallit. Urakoimme mm. perustukset, PVP-asennukset, julkisivut, väliseinät, vesikatot jne.</p>
+        </div>
+
+        <div class="card">
+            <img src="images/raksa3.webp" alt="Rakennusmittaus">
+            <h3>Rakennusmittaus</h3>
+            <p>Meiltä saat kattavaa mittauspalvelua. Hoidamme rakennustyömaan kaikki mittaukset alusta loppuun. Vastaamme pienistä työmaista sekä suuremmista hankkeista.</p>
+        </div>
+
+        <div class="card">
+            <img src="images/raksa4.webp" alt="Pientalorakentaminen">
+            <h3>Pientalorakentaminen</h3>
+            <p>Toteutamme pien- ja omakotitalon rakentamisen avaimet käteen -menetelmällä tai urakoimme osan talostasi kiinteällä urakkahinnalla. Tarvittaessa apua myös pienemmissä töissä.</p>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section" id="yhteys">
+  <div class="container">
+    <div class="contact-card">
+
+      <div class="map-wrapper">
+        <iframe src="https://www.google.com/maps?q=Mustapuronkatu+9,+15300+Lahti&output=embed" loading="lazy"></iframe>
+      </div>
+
+      <div class="contact-content dark-card">
+        <div class="contact-form">
+          <h2>Ota yhteyttä</h2>
+          <form action="send.php" method="POST">
+            <input type="text" name="name" placeholder="Nimi" required>
+            <input type="email" name="email" placeholder="Sähköposti" required>
+            <textarea name="message" placeholder="Viesti" required></textarea>
+            <button type="submit">Lähetä</button>
+          </form>
+        </div>
+
+        <div class="contact-info">
+          <h2>Yhteystiedot</h2>
+          <p><strong>Timber Oy</strong></p>
+          <p>Mustapuronkatu 9</p>
+          <p>15300 Lahti</p>
+
+          <h3>Laskutus</h3>
+          <p>Rakennusliike Timber Oy</p>
+          <p>Järvisentie 14</p>
+          <p>01810 Luhtajoki</p>
+
+          <h3>Työnjohto</h3>
+          <p>Arttu Forsstrom 📞 0400 795 686</p>
+          <p>Karri Pitkänen 📞 0400 623 892</p>
+
+          <h3>Mittaustyöt ja palvelut</h3>
+          <p>Åke Forsstrom 📞 0400 595 820 ✉ mittaus@timber.fi</p>
+
+          <a href="https://www.facebook.com/people/Timber/100063747324284/?modal=admin_todo_tour" target="_blank" class="facebook-link">
+            <img src="images/facebook.avif" alt="Facebook">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="partners">
+  <div class="container">
+    <h2>Yhteistyökumppanit</h2>
+    <div class="partners-grid">
+      <a href="https://consti.fi/" target="_blank"><img src="images/Consti.webp" alt="Partneri 1"></a>
+      <a href="https://www.pallasrakennus.fi/" target="_blank"><img src="images/Pallas.webp" alt="Partneri 2"></a>
+      <a href="https://www.hartela.fi/" target="_blank"><img src="images/Hartela.webp" alt="Partneri 3"></a>
+      <a href="https://knauf.com/fi-FI" target="_blank"><img src="images/knauf.webp" alt="Partneri 4"></a>
+      <a href="https://www.k-rauta.fi/" target="_blank"><img src="images/Krauta.webp" alt="Partneri 5"></a>
+      <a href="https://www.stark-suomi.fi/" target="_blank"><img src="images/Stark.webp" alt="Partneri 6"></a>
+      <a href="https://www.yit.fi/" target="_blank"><img src="images/YIT.webp" alt="Partneri 7"></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+    © 2026 Timber Oy
+</footer>
+
+<script>
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = { threshold: 0.3 };
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+    });
+}, appearOptions);
+faders.forEach(fader => { appearOnScroll.observe(fader); });
+
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+</script>
+
+</body>
+</html>
