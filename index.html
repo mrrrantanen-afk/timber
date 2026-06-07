@@ -3,14 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Timber Oy tarjoaa laadukkaita rakennuspalveluita ja rakennusmittausta Lahdessa ja Päijät-Hämeessä.">
+    <meta name="description" content="Rakennusliike Timber Oy tarjoaa rakennusurakointia, rakennusmittausta ja pientalorakentamista Lahdessa, Päijät-Hämeessä, Hämeenlinnassa ja Kouvolassa.">
+    <meta name="robots" content="index, follow">
 
-    <title>Laadukkaat rakennuspalvelut Lahti | Timber Oy</title>
+    <title>Rakennusliike Lahti | Rakennusmittaus ja urakointi | Timber Oy</title>
+
+    <link rel="canonical" href="https://www.timber.fi/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fi_FI">
+    <meta property="og:site_name" content="Timber Oy">
+    <meta property="og:title" content="Rakennusliike Lahti | Timber Oy">
+    <meta property="og:description" content="Rakennusurakointia, rakennusmittausta ja pientalorakentamista Lahdessa ja Päijät-Hämeessä vuodesta 2007.">
+    <meta property="og:url" content="https://www.timber.fi/">
+    <meta property="og:image" content="https://www.timber.fi/images/Logo.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rakennusliike Lahti | Timber Oy">
+    <meta name="twitter:description" content="Rakennusurakointia, rakennusmittausta ja pientalorakentamista Lahdessa ja Päijät-Hämeessä.">
+    <meta name="twitter:image" content="https://www.timber.fi/images/Logo.webp">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "HomeAndConstructionBusiness",
+            "@id": "https://www.timber.fi/#yritys",
+            "name": "Rakennusliike Timber Oy",
+            "alternateName": "Timber Oy",
+            "url": "https://www.timber.fi/",
+            "image": "https://www.timber.fi/images/Logo.webp",
+            "email": "mittaus@timber.fi",
+            "foundingDate": "2007",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Mustapuronkatu 9",
+                "postalCode": "15300",
+                "addressLocality": "Lahti",
+                "addressCountry": "FI"
+            },
+            "areaServed": [
+                "Lahti",
+                "Päijät-Häme",
+                "Hämeenlinna",
+                "Kouvola"
+            ],
+            "sameAs": [
+                "https://www.facebook.com/people/Timber/100063747324284/"
+            ],
+            "makesOffer": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Rakennusurakointi"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Rakennusmittaus"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Pientalorakentaminen"
+                    }
+                }
+            ]
+        }
+    </script>
 </head>
 <body>
     <nav class="site-nav">
@@ -35,8 +102,8 @@
 
     <main>
         <section id="etusivu" class="hero fade-in">
-            <h1>Timber Oy</h1>
-            <p>Laadukasta rakentamista</p>
+            <h1>Rakennusliike Timber Oy</h1>
+            <p>Laadukasta rakentamista Lahdessa ja Päijät-Hämeessä</p>
             <p>Vuodesta 2007</p>
             <a href="#yhteys" class="button">Ota yhteyttä</a>
         </section>
@@ -60,7 +127,7 @@
 
             <div class="card-grid">
                 <article class="card">
-                    <img src="images/raksa1.webp" alt="Rakennusurakointia työmaalla">
+                    <img src="images/raksa1.webp" alt="Rakennusurakointia työmaalla Lahdessa" loading="lazy" decoding="async">
                     <h3>Rakennusurakointi</h3>
                     <p>
                         Hoidamme vuosien kokemuksella koulut, kaupat, palvelutalot sekä hallit.
@@ -69,7 +136,7 @@
                 </article>
 
                 <article class="card">
-                    <img src="images/raksa3.webp" alt="Rakennusmittausta työmaalla">
+                    <img src="images/raksa3.webp" alt="Rakennusmittausta työmaalla" loading="lazy" decoding="async">
                     <h3>Rakennusmittaus</h3>
                     <p>
                         Meiltä saat kattavaa mittauspalvelua. Hoidamme rakennustyömaan kaikki mittaukset
@@ -78,7 +145,7 @@
                 </article>
 
                 <article class="card">
-                    <img src="images/raksa4.webp" alt="Pientalorakentamista">
+                    <img src="images/raksa4.webp" alt="Pientalon rakentamista" loading="lazy" decoding="async">
                     <h3>Pientalorakentaminen</h3>
                     <p>
                         Toteutamme pien- ja omakotitalon rakentamisen avaimet käteen -menetelmällä tai
@@ -87,7 +154,7 @@
                 </article>
 
                 <button class="card gallery-card" id="open-gallery" type="button">
-                    <img src="images/kuvagalleria/Hallin julkisivutyöt.webp" alt="Kuvagalleria rakennustöistä">
+                    <img src="images/kuvagalleria/Hallin julkisivutyöt.webp" alt="Kuvagalleria Timber Oy:n rakennustöistä" loading="lazy" decoding="async">
                     <h3>Kuvagalleria</h3>
                     <p>
                         Katso kuvia toteutetuista rakennus-, julkisivu-, asennus- ja maanrakennustöistä.
@@ -155,13 +222,13 @@
             <div class="container">
                 <h2>Yhteistyökumppanit</h2>
                 <div class="partners-grid">
-                    <a href="https://consti.fi/" target="_blank" rel="noopener"><img src="images/Consti.webp" alt="Consti"></a>
-                    <a href="https://www.pallasrakennus.fi/" target="_blank" rel="noopener"><img src="images/Pallas.webp" alt="Pallas Rakennus"></a>
-                    <a href="https://www.hartela.fi/" target="_blank" rel="noopener"><img src="images/Hartela.webp" alt="Hartela"></a>
-                    <a href="https://knauf.com/fi-FI" target="_blank" rel="noopener"><img src="images/knauf.webp" alt="Knauf"></a>
-                    <a href="https://www.k-rauta.fi/" target="_blank" rel="noopener"><img src="images/Krauta.webp" alt="K-Rauta"></a>
-                    <a href="https://www.stark-suomi.fi/" target="_blank" rel="noopener"><img src="images/Stark.webp" alt="Stark"></a>
-                    <a href="https://www.yit.fi/" target="_blank" rel="noopener"><img src="images/YIT.webp" alt="YIT"></a>
+                    <a href="https://consti.fi/" target="_blank" rel="noopener"><img src="images/Consti.webp" alt="Consti" loading="lazy" decoding="async"></a>
+                    <a href="https://www.pallasrakennus.fi/" target="_blank" rel="noopener"><img src="images/Pallas.webp" alt="Pallas Rakennus" loading="lazy" decoding="async"></a>
+                    <a href="https://www.hartela.fi/" target="_blank" rel="noopener"><img src="images/Hartela.webp" alt="Hartela" loading="lazy" decoding="async"></a>
+                    <a href="https://knauf.com/fi-FI" target="_blank" rel="noopener"><img src="images/knauf.webp" alt="Knauf" loading="lazy" decoding="async"></a>
+                    <a href="https://www.k-rauta.fi/" target="_blank" rel="noopener"><img src="images/Krauta.webp" alt="K-Rauta" loading="lazy" decoding="async"></a>
+                    <a href="https://www.stark-suomi.fi/" target="_blank" rel="noopener"><img src="images/Stark.webp" alt="Stark" loading="lazy" decoding="async"></a>
+                    <a href="https://www.yit.fi/" target="_blank" rel="noopener"><img src="images/YIT.webp" alt="YIT" loading="lazy" decoding="async"></a>
                 </div>
             </div>
         </section>
